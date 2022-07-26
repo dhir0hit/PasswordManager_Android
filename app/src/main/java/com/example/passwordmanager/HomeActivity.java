@@ -1,11 +1,13 @@
 package com.example.passwordmanager;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +18,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Time;
+import java.time.LocalTime;
+import java.util.Locale;
+
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class HomeActivity extends AppCompatActivity {
     private LinearLayout CardList;
     private ImageButton BackgroundButton;
+    private TextView greeting;
+    private ImageView img;
+    LocalTime time = LocalTime.now();
+    int hour = time.getHour();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +39,23 @@ public class HomeActivity extends AppCompatActivity {
 
         CardList = findViewById(R.id.card_list);
         BackgroundButton = findViewById(R.id.background_button);
+        greeting = findViewById(R.id.greeting);
+        img = findViewById(R.id.imageView);
+
+        String userGreeting = "";
+
+        if (hour<12 && hour>=6){
+            userGreeting = "Good morning";
+            img.setImageResource(R.drawable.ic_baseline_wb_sunny_48);
+        } else if (hour>=12 && hour<18) {
+            userGreeting = "Good afternoon";
+            img.setImageResource(R.drawable.ic_baseline_wb_sunny_48);
+        } else {
+            userGreeting = "Good evening";
+            img.setImageResource(R.drawable.ic_baseline_bedtime_48);
+        }
+
+        greeting.setText("Hi User, "+userGreeting);
 
         BackgroundButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,9 +112,15 @@ class Card {
         * TODO: add if-else to choose between different images of platform and have one default one if platform not found
         * Setting Image to avatarImage
         * */
-        avatarImage.setImageResource(R.drawable.google_logo);
-//        avatarImage.setMinimumWidth(255);
-//        avatarImage.setMinimumHeight(114);
+        String platform = "Google".toLowerCase(Locale.ROOT);
+        switch (platform){
+            case "google":
+                avatarImage.setImageResource(R.drawable.google_logo);
+
+
+                break;
+        }
+
         avatarImage.setLayoutParams(new LinearLayout.LayoutParams(300, 180));
 
         /*
