@@ -7,15 +7,10 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public class PassDao {
+public interface PassDao {
     @Query("SELECT * FROM platforms")
-    List<platforms> getAll() {
-      return null;
-    }
+    List<platforms> getAll();
 
     @Insert
-    void insert(platforms p) {
-        
-
-    }
+    void insert(platforms p);
 }
