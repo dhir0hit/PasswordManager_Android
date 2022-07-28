@@ -14,6 +14,9 @@
         android:theme="@style/Theme.PasswordManager"
         tools:targetApi="31">
         <activity
+            android:name=".Create"
+            android:exported="false" />
+        <activity
             android:name=".LandingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
