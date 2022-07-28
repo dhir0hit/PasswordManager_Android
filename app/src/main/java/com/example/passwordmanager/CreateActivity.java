@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class Create extends AppCompatActivity {
+public class CreateActivity extends AppCompatActivity {
 
     MyDatabase db;
     EditText idEt, platEt, userEt, passEt, emailEt, infoEt;
