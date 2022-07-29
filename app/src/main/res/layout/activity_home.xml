@@ -137,7 +137,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:paddingBottom="100dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_secondary"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/total_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textSize="34sp" />
+
+                    <TextView
+                        android:id="@+id/total_account_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_account_heading"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/total_account_descripton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="16sp"
+                        android:text="@string/total_account_description" />
+
+                    <Button
+                        android:id="@+id/total_account_filter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="LoadFavorite"
+                        android:text="@string/show_accounts_button" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

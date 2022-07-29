@@ -14,4 +14,6 @@
     <string name="favorite_account_description">All the accounts which are favorite are listed here</string>
     <string name="recent_account_heading">Recent Accounts</string>
     <string name="recent_account_description">All the accounts which are Recently created are listed here</string>
+    <string name="total_account_heading">Total Accounts</string>
+    <string name="total_account_description">All the accounts are listed here</string>
 </resources>

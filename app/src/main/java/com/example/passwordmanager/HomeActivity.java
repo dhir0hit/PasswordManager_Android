@@ -20,12 +20,14 @@ public class HomeActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void LoadFavorite(View view) {
         Intent intent = new Intent(HomeActivity.this, PassListActivity.class);
+        intent.putExtra("type", "favorite");
         startActivity(intent);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void LoadRecent(View view){
         Intent intent = new Intent(HomeActivity.this, PassListActivity.class);
+        intent.putExtra("type", "recent");
         startActivity(intent);
     }
 }
