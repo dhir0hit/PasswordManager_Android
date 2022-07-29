@@ -140,7 +140,7 @@ public class LandingActivity extends AppCompatActivity {
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LandingActivity.this, PassListActivity.class);
+                Intent intent = new Intent(LandingActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

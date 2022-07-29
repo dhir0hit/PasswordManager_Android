@@ -28,6 +28,8 @@ public class PassListActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_passlist);
 
+
+
         CardList = findViewById(R.id.card_list);
         BackgroundButton = findViewById(R.id.background_button);
         greeting = findViewById(R.id.greeting);

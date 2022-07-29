@@ -3,4 +3,15 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_landing">LandingActivity</string>
+    <string name="overall_strength">Overall Strength</string>
+    <string name="normal_strength">Normal</string>
+    <string name="strong_strength">Strong</string>
+    <string name="weak_strength">Weak</string>
+
+    <string name="show_accounts_button">Show Accounts</string>
+
+    <string name="favorite_account_heading">Favorite Accounts</string>
+    <string name="favorite_account_description">All the accounts which are favorite are listed here</string>
+    <string name="recent_account_heading">Recent Accounts</string>
+    <string name="recent_account_description">All the accounts which are Recently created are listed here</string>
 </resources>
