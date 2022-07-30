@@ -139,7 +139,7 @@ class Card {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Context, DetailsActivity.class);
-                intent.putExtra("account", new String[]{"sample Platform", "sample Id", "sample username", "sample mail", "sample password", "sample website", "sample additional info", "true"});
+                intent.putExtra("account", "123");
                 intent.putExtra("account_image", String.format("%d", imageId));
                 intent.putExtra("creation_date", LocalDate.now().toString());
                 intent.putExtra("last_edit_date", LocalDate.now().toString());

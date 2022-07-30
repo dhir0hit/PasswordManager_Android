@@ -57,6 +57,7 @@ public class CreateActivity extends AppCompatActivity {
 
         db.passDao().insert(platforms);
 
+        // TODO: MOve to details page of account just created ( reload db if not working )
         idEt.setText("");
         userEt.setText("");
         platEt.setText("");

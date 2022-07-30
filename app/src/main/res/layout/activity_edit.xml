@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity">
+    tools:context=".EditActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,8 +31,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="editAccount"
-                    app:srcCompat="@drawable/ic_baseline_edit_24" />
+                    android:onClick="cancelChanges"
+                    app:srcCompat="@drawable/ic_baseline_close_24" />
 
                 <ImageButton
                     android:id="@+id/delete_edit_button"
@@ -78,18 +78,20 @@
                 android:orientation="vertical"
                 android:padding="12dp">
 
-                <TextView
+                <EditText
                     android:id="@+id/account_platform_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Platform"
-                    android:textSize="24sp" />
+                    android:ems="10"
+                    android:hint="Platform"
+                    android:inputType="textPersonName" />
 
                 <TextView
-                    android:id="@+id/account_id_edit"
+                    android:id="@+id/account_id_edit2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="id(number)" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -120,19 +122,14 @@
                         android:layout_width="10dp"
                         android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/account_username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="TextView" />
-
-                    <ImageButton
-                        android:id="@+id/account_username_copy"
+                    <EditText
+                        android:id="@+id/account_username_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_baseline_content_copy_24" />
+                        android:ems="10"
+                        android:hint="Username"
+                        android:inputType="textPersonName" />
+
                 </TableRow>
 
                 <TableRow
@@ -150,19 +147,14 @@
                         android:layout_width="10dp"
                         android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/account_mail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="TextView" />
-
-                    <ImageButton
-                        android:id="@+id/account_mail_Copy"
+                    <EditText
+                        android:id="@+id/account_mail_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_baseline_content_copy_24" />
+                        android:ems="10"
+                        android:hint="mail@mail.com"
+                        android:inputType="textPersonName" />
+
                 </TableRow>
 
                 <TableRow
@@ -180,36 +172,14 @@
                         android:layout_width="10dp"
                         android:layout_height="wrap_content" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/account_password"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:text="TextView" />
-
-                        <ImageButton
-                            android:id="@+id/show_password"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="#00FFFFFF"
-                            android:onClick="ShowPassword"
-                            android:padding="5dp"
-                            app:srcCompat="@drawable/ic_baseline_visibility_24" />
-                    </LinearLayout>
-
-                    <ImageButton
-                        android:id="@+id/account_password_copy"
+                    <EditText
+                        android:id="@+id/account_password_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_baseline_content_copy_24" />
+                        android:ems="10"
+                        android:hint="Password"
+                        android:inputType="textPersonName" />
+
                 </TableRow>
 
                 <TableRow
@@ -227,19 +197,14 @@
                         android:layout_width="10dp"
                         android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/account_website"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="TextView" />
-
-                    <ImageButton
-                        android:id="@+id/account_website_copy"
+                    <EditText
+                        android:id="@+id/account_website_edit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_baseline_content_copy_24" />
+                        android:ems="10"
+                        android:hint="Website"
+                        android:inputType="textPersonName" />
+
                 </TableRow>
             </TableLayout>
 
@@ -257,68 +222,52 @@
                 android:layout_height="wrap_content"
                 android:text="Additional Info :" />
 
-            <TextView
-                android:id="@+id/account_additional_info"
+            <EditText
+                android:id="@+id/account_additional_info_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="nothing to show" />
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Something to remeber"
+                android:inputType="textMultiLine" />
 
         </LinearLayout>
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom">
+            android:gravity="bottom"
+            android:orientation="vertical">
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/textView15"
+                <Button
+                    android:id="@+id/cancel_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="Created" />
-
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/account_created"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="12-10-2021" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="Last Edited" />
+                    android:onClick="cancelChanges"
+                    android:text="Cancel" />
 
                 <Space
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/account_last_created"
+                <Button
+                    android:id="@+id/save_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="10-10-1002" />
-            </TableRow>
-
-        </TableLayout>
+                    android:onClick="saveChanges"
+                    android:text="Save" />
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

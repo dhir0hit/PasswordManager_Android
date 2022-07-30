@@ -3,6 +3,7 @@ package com.example.passwordmanager;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,9 @@ public class PassListActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_passlist);
 
+        Intent intent = new Intent();
+        // TODO: use type to filter account and display accounts
+        String Type = intent.getStringExtra("type");
 
 
         CardList = findViewById(R.id.card_list);

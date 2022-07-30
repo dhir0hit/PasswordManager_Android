@@ -3,6 +3,8 @@ package com.example.passwordmanager;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
+
+    // Todo: load from db everytime this activity is open its better way
+    // TODO: onresume update data so data edited will show
 
     /*
      * Display Info TextView/ImageView
@@ -65,12 +70,15 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_details);
+
+
         accountPassStrength = findViewById(R.id.progressBar);
 
         accountImage = findViewById(R.id.account_image);
-        accountPlatform = findViewById(R.id.account_platform);
-        accountId = findViewById(R.id.account_id);
+        accountPlatform = findViewById(R.id.account_platform_edit);
+        accountId = findViewById(R.id.account_id_edit);
 
         accountUserName = findViewById(R.id.account_username);
         accountMail = findViewById(R.id.account_mail);
@@ -84,10 +92,10 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         // TODO: Get intent from other activity to display image
-        // TODO: Pass Array of account through intent
-
+        // TODO: Load data from db find id
         Intent intent = getIntent();
-        String[] accountDetail = intent.getStringArrayExtra("account");
+        String[] accountDetail = {"sample Platform", "sample Id", "sample username", "sample mail", "sample password", "sample website", "sample additional info", "true"};
+        int Id = Integer.parseInt(intent.getStringExtra("account"));
         int accountImageID = Integer.parseInt(intent.getStringExtra("account_image").toString());
 
         String creationDate =  intent.getStringExtra("creation_date").toString();
@@ -121,6 +129,46 @@ public class DetailsActivity extends AppCompatActivity {
 
         favoriteAccount = Boolean.parseBoolean(accountDetail[7]);
 
+
+        copyUserName = findViewById(R.id.account_username_copy);
+        copyMail = findViewById(R.id.account_mail_Copy);
+        copyPassword = findViewById(R.id.account_password_copy);
+        copyWebsite = findViewById(R.id.account_website_copy);
+
+
+        copyUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("username", accountDetail[2]);
+                clipboard.setPrimaryClip(clipData);
+            }
+        });
+        copyMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("username", accountDetail[3]);
+                clipboard.setPrimaryClip(clipData);
+            }
+        });
+        copyPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("username", accountDetail[4]);
+                clipboard.setPrimaryClip(clipData);
+            }
+        });
+        copyWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("username", accountDetail[5]);
+                clipboard.setPrimaryClip(clipData);
+            }
+        });
+
     }
 
     public void favoriteCurrentAccount(View view){
@@ -149,6 +197,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     public void ShowPassword(View view) {
+
         if(password_show) {
             String text = "";
 
@@ -157,10 +206,21 @@ public class DetailsActivity extends AppCompatActivity {
             }
             accountPassword.setText(text);
 
+            ((ImageButton) view).setImageResource(R.drawable.ic_baseline_visibility_24);
+
+
             password_show = !password_show;
         } else{
             accountPassword.setText(password);
             password_show = !password_show;
+            ((ImageButton) view).setImageResource(R.drawable.ic_baseline_visibility_off_24);
+
         }
+    }
+
+    public void editAccount(View view) {
+        Intent intent = new Intent(DetailsActivity.this, EditActivity.class);
+        intent.putExtra("Id", "accountid");
+        startActivity(intent);
     }
 }
