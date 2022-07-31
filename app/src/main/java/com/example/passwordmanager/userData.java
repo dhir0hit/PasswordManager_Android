@@ -1,20 +1,21 @@
 package com.example.passwordmanager;
 
+import android.database.Observable;
+
 import java.util.List;
 import java.util.Objects;
 
 
 public class userData {
 
-    MyDatabase db;
+    private static MyDatabase db;
+    public static List<platforms> getAll = db.passDao().getAll() ;
 
-    protected List<platforms> getAll = db.passDao().getAll();
-
-    protected String[] find(int id){
+    protected String find(int id){
         platforms obj = new platforms();
         if(id == obj.id){
-            String[] account = new String[]{obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo};
-            return account;
+            Account account = new Account(obj.id, obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo, obj.Favorite, obj.CreationDate, obj.EditDate);
+            return obj.UserName;
         }
         return null;
     }
@@ -24,12 +25,12 @@ public class userData {
         for (platforms platform: getAll){
             if(Objects.equals(filterType, "favorite")){
                 // TODO: Add filter
-                String[] account = new String[]{obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo};
-                return account;
+//                String[] account = new String[]{obj.id, obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo};
+//                return account;
             }
             else if(Objects.equals(filterType, "recent")){
-                String[] account = new String[]{obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo};
-                return account;
+//                String[] account = new String[]{obj.id, obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo};
+//                return account;
             } else {
                 return null;
             }
@@ -39,3 +40,4 @@ public class userData {
 
 
 }
+

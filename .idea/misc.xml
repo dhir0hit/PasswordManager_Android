@@ -26,10 +26,13 @@
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/drawable/ic_baseline_star_notselected.xml" value="0.2255" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/drawable/ic_baseline_star_selected.xml" value="0.2825" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/drawable/star-48px.xml" value="0.1935" />
+        <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_create.xml" value="0.25" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_details.xml" value="0.33" />
+        <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_edit.xml" value="0.33" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_fullscreen.xml" value="0.35190217391304346" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_home.xml" value="0.2893258426966292" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_landing.xml" value="0.33" />
+        <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_passlist.xml" value="0.25" />
       </map>
     </option>
   </component>

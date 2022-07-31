@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class HomeActivity extends AppCompatActivity {
 
     // Account Numbers
@@ -16,11 +18,14 @@ public class HomeActivity extends AppCompatActivity {
     private TextView totalFavoriteAccount;
     private TextView totalRecentAccount;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+
+        // TODO: uncomment when db stop throwing not null
+//        List<platforms> platformsList = userData.getAll;
+
         setContentView(R.layout.activity_home);
 
         totalAccount = findViewById(R.id.total_account);
@@ -48,6 +53,11 @@ public class HomeActivity extends AppCompatActivity {
     public void LoadRecent(View view){
         Intent intent = new Intent(HomeActivity.this, PassListActivity.class);
         intent.putExtra("type", "recent");
+        startActivity(intent);
+    }
+
+    public void CreateAccountActivity(View view){
+        Intent intent = new Intent(HomeActivity.this, CreateActivity.class);
         startActivity(intent);
     }
 }

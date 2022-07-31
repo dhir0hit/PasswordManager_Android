@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class PassListActivity extends AppCompatActivity {
@@ -22,6 +23,8 @@ public class PassListActivity extends AppCompatActivity {
     private ImageView img;
     LocalTime time = LocalTime.now();
     int hour = time.getHour();
+
+    MyDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +65,11 @@ public class PassListActivity extends AppCompatActivity {
         });
 
 
-        Card card = new Card(this, "mail@mail.com", "platform", true);
-        card.AddTo(CardList);
+        /*Card card = new Card(this, "mail@mail.com", "platform", true);
+        card.AddTo(CardList);*/
 
-        for (int i=0; i<10;i++){
-            card = new Card(this, "mail1@mail.com", "platform1", false);
+        for (platforms account: userData.getAll){
+            Card card = new Card(this, account.Email, account.PlatformName, account.Favorite);
             card.AddTo(CardList);
         }
     }
