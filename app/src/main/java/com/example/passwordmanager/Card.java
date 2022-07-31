@@ -33,7 +33,6 @@ class Card {
     private int imageId;
 
     protected void AddTo(LinearLayout parentView){
-        // TODO: Add button to add listener to change page to details
         cardView = new CardView(Context);
         linearLayoutHorizontal = new LinearLayout(Context);
         avatarImage = new ImageView(Context);
