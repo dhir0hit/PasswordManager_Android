@@ -24,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         // TODO: uncomment when db stop throwing not null
+//        List<platforms> getAll = db.passDao().getAll() ;
 //        List<platforms> platformsList = userData.getAll;
 
         setContentView(R.layout.activity_home);

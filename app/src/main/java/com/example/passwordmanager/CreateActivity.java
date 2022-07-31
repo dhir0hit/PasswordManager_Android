@@ -55,7 +55,7 @@ public class CreateActivity extends AppCompatActivity {
         String info = infoEt.getText().toString();
 
 
-        platforms platforms = new platforms(id, platform, username, password, email, website, info);
+        platforms platforms = new platforms(id, platform, username, email, password, website, info);
 
         db.passDao().insert(platforms);
 
