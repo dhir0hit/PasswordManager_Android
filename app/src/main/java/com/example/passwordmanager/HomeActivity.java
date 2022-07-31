@@ -32,8 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         totalFavoriteAccount.setText("32");
         totalRecentAccount.setText("7");
 
-        // TODO: class.find(account Name or account id) to find one account from db
-        // TODO: class.getAll() to get all the accounts
+
         // TODO: class.filterAll(favorite or recent) to get all account with specific filter
 
     }

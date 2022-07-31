@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class CreateActivity extends AppCompatActivity {
 
     MyDatabase db;
-    EditText idEt, platEt, userEt, passEt, emailEt, infoEt;
+    EditText idEt, platEt, userEt, passEt, emailEt, websiteEt, infoEt;
     Button btn;
 
     @Override
@@ -27,6 +27,7 @@ public class CreateActivity extends AppCompatActivity {
         userEt = findViewById(R.id.username);
         passEt = findViewById(R.id.password);
         emailEt = findViewById(R.id.email);
+        websiteEt = findViewById(R.id.website);
         infoEt = findViewById(R.id.additionalinfo);
 
         btn = findViewById(R.id.button);
@@ -50,10 +51,11 @@ public class CreateActivity extends AppCompatActivity {
         String username = userEt.getText().toString();
         String password = passEt.getText().toString();
         String email = emailEt.getText().toString();
+        String website = websiteEt.getText().toString();
         String info = infoEt.getText().toString();
 
 
-        platforms platforms = new platforms(id, platform, username, password, email, info);
+        platforms platforms = new platforms(id, platform, username, password, email, website, info);
 
         db.passDao().insert(platforms);
 

@@ -19,6 +19,13 @@ public class DetailsActivity extends AppCompatActivity {
     // Todo: load from db everytime this activity is open its better way
     // TODO: onresume update data so data edited will show
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
     /*
      * Display Info TextView/ImageView
      * */

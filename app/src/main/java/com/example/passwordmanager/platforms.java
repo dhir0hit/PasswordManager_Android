@@ -14,16 +14,18 @@ public class platforms {
     String UserName;
     String Email;
     String Password;
+    String Website;
     String AdditionalInfo;
 
 
     public platforms(){}
-    public platforms(int id, String platformName, String userName, String email, String password, String additionalInfo){
+    public platforms(int id, String platformName, String userName, String email, String password, String website, String additionalInfo){
         this.id = id;
         PlatformName = platformName;
         UserName = userName;
         Email = email;
         Password = password;
+        Website = website;
         AdditionalInfo = additionalInfo;
     }
 }
