@@ -57,13 +57,8 @@ public class CreateActivity extends AppCompatActivity {
 
         db.passDao().insert(platforms);
 
-        // TODO: MOve to details page of account just created ( reload db if not working )
-        idEt.setText("");
-        userEt.setText("");
-        platEt.setText("");
-        passEt.setText("");
-        emailEt.setText("");
-        infoEt.setText("");
+
+        finish();
 
 
         Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
