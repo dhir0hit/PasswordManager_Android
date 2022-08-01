@@ -15,6 +15,7 @@ public class ShowAlertDialog extends AppCompatDialogFragment {
     private String Message;
 
     public boolean userInput;
+    int id;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -27,6 +28,10 @@ public class ShowAlertDialog extends AppCompatDialogFragment {
                         userInput = true;
 
                         getActivity().finish();
+                        userData.Delete(id);
+
+
+
 
                         Toast toast = Toast.makeText(getContext(), "Account Deleted", Toast.LENGTH_LONG);
                         toast.show();
@@ -42,8 +47,9 @@ public class ShowAlertDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
-    public ShowAlertDialog(String title, String message) {
+    public ShowAlertDialog(String title, String message, int Id) {
         Title = title;
         Message = message;
+        id = Id;
     }
 }

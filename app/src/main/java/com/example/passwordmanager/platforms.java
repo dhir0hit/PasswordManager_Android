@@ -24,7 +24,7 @@ public class platforms {
     String Password;
     String Website;
     String AdditionalInfo;
-    Boolean Favorite;
+    boolean Favorite;
     String CreationDate;
     String EditDate;
 

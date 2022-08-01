@@ -27,11 +27,11 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/cancel_edit_button"
+                    android:id="@+id/edit_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="editAccount"
+                    android:onClick="EditAccount"
                     app:srcCompat="@drawable/ic_baseline_edit_24" />
 
                 <ImageButton

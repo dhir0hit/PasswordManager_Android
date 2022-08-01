@@ -18,6 +18,7 @@ public class EditActivity extends AppCompatActivity {
     private EditText accountAdditionalInfo;
 
     private TextView accountId;
+    private boolean IsFavorite;
 
 
 
@@ -27,11 +28,12 @@ public class EditActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_edit);
 
-        Intent intent = new Intent();
-        // TODO: load account details from db using id
-        intent.getStringExtra("Id");
+        Intent intent = getIntent();
 
-        String[] accountDetail = {"sample Platform", "sample Id", "sample username", "sample mail", "sample password", "sample website", "sample additional info", "true"};
+        int Id = Integer.parseInt(intent.getStringExtra("account_id").toString());
+
+        userData accounts = new userData(this);
+        platforms account = accounts.find(Id);
 
         accountPlatform = findViewById(R.id.account_platform_edit);
         accountUserName = findViewById(R.id.account_username_edit);
@@ -42,13 +44,13 @@ public class EditActivity extends AppCompatActivity {
 
         accountId = findViewById(R.id.account_id_edit2);
 
-        accountPlatform.setText(accountDetail[0]);
-        accountId.setText(accountDetail[1]);
-        accountUserName.setText(accountDetail[2]);
-        accountMail.setText(accountDetail[3]);
-        accountPassword.setText(accountDetail[4]);
-        accountWebsite.setText(accountDetail[5]);
-        accountAdditionalInfo.setText(accountDetail[6]);
+        accountPlatform.setText(account.PlatformName);
+        accountId.setText(String.format("%d", account.id));
+        accountUserName.setText(account.UserName);
+        accountMail.setText(account.Email);
+        accountPassword.setText(account.Password);
+        accountWebsite.setText(account.Website);
+        accountAdditionalInfo.setText(account.AdditionalInfo);
 
 
     }
@@ -65,13 +67,16 @@ public class EditActivity extends AppCompatActivity {
         accountWebsite = findViewById(R.id.account_website_edit);
         accountAdditionalInfo = findViewById(R.id.account_additional_info_edit);
 
-        // TODO: Save things to database
+
+
+        userData.UpdateAll(Integer.parseInt(accountId.getText().toString()), accountPlatform.getText().toString(), accountUserName.getText().toString(), accountMail.getText().toString(), accountPassword.getText().toString(), accountWebsite.getText().toString(), accountAdditionalInfo.getText().toString(), IsFavorite);
+
 
         finish();
     }
 
     public void deleteAccount(View view){
-        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", "Are You Sure You Wanna Delete The Account?");
+        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", accountId.getText().toString(), Integer.parseInt(accountId.getText().toString()));
 
         showAlertDialog.show(getSupportFragmentManager(), "Alert dialog");
 
@@ -79,8 +84,14 @@ public class EditActivity extends AppCompatActivity {
 
         // TODO: delete account from database if userInput true
         if (userInput){
+
+            userData account = new userData(this);
+
+            account.Delete(Integer.parseInt(accountId.getText().toString()));
             Intent intent = new Intent(EditActivity.this, HomeActivity.class);
             startActivity(intent);
+
         }
+
     }
 }

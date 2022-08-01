@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -23,8 +24,91 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Intent intent = getIntent();
+        int Id = Integer.parseInt(intent.getStringExtra("account_id").toString());
+        int accountImageID = Integer.parseInt(intent.getStringExtra("account_image").toString());
+
+        userData accounts = new userData(this);
+        platforms account = accounts.find(Id);
+
+        AccountId = Id;
+
+        PasswordStrength passwordStrength = new PasswordStrength("account.Password");
+        accountPassStrength.setProgress(passwordStrength.Percent());
+
+        accountImage.setImageResource(accountImageID);
+        accountPlatform.setText(account.PlatformName);
+        accountId.setText(String.format("%d", account.id));
+
+        accountUserName.setText(account.UserName);
+        accountMail.setText(account.Email);
+
+        password = account.Password;
+        String text = "";
+
+        for (int x = 0; x < password.length(); x++) {
+            text += "⚫";
+        }
+        accountPassword.setText(text);
+
+        accountWebsite.setText(account.Website);
+        accountAdditionalInfo.setText(account.AdditionalInfo);
+
+        accountCreationDate.setText(account.CreationDate);
+        accountLastEditedDate.setText(account.EditDate);
+
+        favoriteAccount = account.Favorite;
+
+
+        copyUserName = findViewById(R.id.account_username_copy);
+        copyMail = findViewById(R.id.account_mail_Copy);
+        copyPassword = findViewById(R.id.account_password_copy);
+        copyWebsite = findViewById(R.id.account_website_copy);
+
+
+        copyUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("username", account.UserName);
+                clipboard.setPrimaryClip(clipData);
+
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        copyMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("Email", account.Email);
+                clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+            }
+        });
+        copyPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("Password", account.Password);
+                clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        copyWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("username", account.Website);
+                clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
+
 
     /*
      * Display Info TextView/ImageView
@@ -55,9 +139,9 @@ public class DetailsActivity extends AppCompatActivity {
      * Interactions Buttons
      * */
     // Top Nav
-    private ImageButton editAccount;
-    private ImageButton deleteAccount;
-    private ImageButton favoriteAccountButton;
+//    private ImageButton editAccount;
+//    private ImageButton deleteAccount;
+//    private ImageButton favoriteAccountButton;
 
     // Copy Account Details
     private ImageButton copyUserName;
@@ -66,11 +150,12 @@ public class DetailsActivity extends AppCompatActivity {
     private ImageButton copyWebsite;
 
     // show password
-    private ImageView showPassword;
+//    private ImageView showPassword;
 
     private boolean favoriteAccount;
     private String password;
     private boolean password_show;
+    private int AccountId;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -101,26 +186,25 @@ public class DetailsActivity extends AppCompatActivity {
         // TODO: Get intent from other activity to display image
         // TODO: Load data from db find id
         Intent intent = getIntent();
-        String[] accountDetail = {"sample Platform", "sample Id", "sample username", "sample mail", "sample password", "sample website", "sample additional info", "true"};
-        int Id = Integer.parseInt(intent.getStringExtra("account"));
+        int Id = Integer.parseInt(intent.getStringExtra("account_id").toString());
         int accountImageID = Integer.parseInt(intent.getStringExtra("account_image").toString());
 
-        String creationDate =  intent.getStringExtra("creation_date").toString();
-        String lastEditDate =  intent.getStringExtra("last_edit_date").toString();
+        userData accounts = new userData(this);
+        platforms account = accounts.find(Id);
 
+        AccountId = Id;
 
-
-        PasswordStrength passwordStrength = new PasswordStrength(accountDetail[4]);
+        PasswordStrength passwordStrength = new PasswordStrength("account.Password");
         accountPassStrength.setProgress(passwordStrength.Percent());
 
         accountImage.setImageResource(accountImageID);
-        accountPlatform.setText(accountDetail[0]);
-        accountId.setText(accountDetail[1]);
+        accountPlatform.setText(account.PlatformName);
+        accountId.setText(String.format("%d", account.id));
 
-        accountUserName.setText(accountDetail[2]);
-        accountMail.setText(accountDetail[3]);
+        accountUserName.setText(account.UserName);
+        accountMail.setText(account.Email);
 
-        password = accountDetail[4];
+        password = account.Password;
         String text = "";
 
         for (int x = 0; x < password.length(); x++) {
@@ -128,13 +212,13 @@ public class DetailsActivity extends AppCompatActivity {
         }
         accountPassword.setText(text);
 
-        accountWebsite.setText(accountDetail[5]);
-        accountAdditionalInfo.setText(accountDetail[6]);
+        accountWebsite.setText(account.Website);
+        accountAdditionalInfo.setText(account.AdditionalInfo);
 
-        accountCreationDate.setText(creationDate);
-        accountLastEditedDate.setText(lastEditDate);
+        accountCreationDate.setText(account.CreationDate);
+        accountLastEditedDate.setText(account.EditDate);
 
-        favoriteAccount = Boolean.parseBoolean(accountDetail[7]);
+        favoriteAccount = account.Favorite;
 
 
         copyUserName = findViewById(R.id.account_username_copy);
@@ -147,34 +231,49 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("username", accountDetail[2]);
+                ClipData clipData = ClipData.newPlainText("username", account.UserName);
                 clipboard.setPrimaryClip(clipData);
+
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
             }
         });
         copyMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("username", accountDetail[3]);
+                ClipData clipData = ClipData.newPlainText("Email", account.Email);
                 clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
             }
         });
         copyPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("username", accountDetail[4]);
+                ClipData clipData = ClipData.newPlainText("Password", account.Password);
                 clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
             }
         });
         copyWebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("username", accountDetail[5]);
+                ClipData clipData = ClipData.newPlainText("username", account.Website);
                 clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
             }
         });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        userData.UpdateFavorite(AccountId, favoriteAccount);
 
     }
 
@@ -190,17 +289,18 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     public void deleteAccount(View view){
-        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", "Are You Sure You Wanna Delete The Account?");
+        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", "Are You Sure You Wanna Delete The Account?", AccountId);
 
         showAlertDialog.show(getSupportFragmentManager(), "Alert dialog");
 
         boolean userInput = showAlertDialog.userInput;
-
-        // TODO: delete account from database if userInput true
+/*
         if (userInput){
-            Intent intent = new Intent(DetailsActivity.this, HomeActivity.class);
-            startActivity(intent);
-        }
+            userData.Delete(AccountId);
+            finish();
+
+            Toast.makeText(this, "Account Deleted", Toast.LENGTH_SHORT).show();
+        }*/
     }
 
     public void ShowPassword(View view) {
@@ -225,9 +325,9 @@ public class DetailsActivity extends AppCompatActivity {
         }
     }
 
-    public void editAccount(View view) {
+    public void EditAccount(View view) {
         Intent intent = new Intent(DetailsActivity.this, EditActivity.class);
-        intent.putExtra("Id", "accountid");
+        intent.putExtra("account_id", String.format("%d", AccountId));
         startActivity(intent);
     }
 }

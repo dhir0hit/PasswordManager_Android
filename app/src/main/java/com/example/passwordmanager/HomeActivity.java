@@ -22,12 +22,14 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+        setContentView(R.layout.activity_home);
 
         // TODO: uncomment when db stop throwing not null
+//        userData user_Data = new userData(this);
+//         MyDatabase db = user_Data.db;
 //        List<platforms> getAll = db.passDao().getAll() ;
 //        List<platforms> platformsList = userData.getAll;
 
-        setContentView(R.layout.activity_home);
 
         totalAccount = findViewById(R.id.total_account);
         totalFavoriteAccount = findViewById(R.id.total_favorite_account);

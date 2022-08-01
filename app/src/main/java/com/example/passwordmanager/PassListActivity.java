@@ -68,8 +68,10 @@ public class PassListActivity extends AppCompatActivity {
         /*Card card = new Card(this, "mail@mail.com", "platform", true);
         card.AddTo(CardList);*/
 
-        for (platforms account: userData.getAll){
-            Card card = new Card(this, account.Email, account.PlatformName, account.Favorite);
+        userData accounts = new userData(this);
+
+        for (platforms account: accounts.getAll){
+            Card card = new Card(this, account.id, account.Email, account.PlatformName, account.Favorite);
             card.AddTo(CardList);
         }
     }

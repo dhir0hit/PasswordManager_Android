@@ -2,49 +2,82 @@ package com.example.passwordmanager;
 
 import android.content.Context;
 import android.database.Observable;
+import android.os.Build;
 
+import androidx.annotation.RequiresApi;
 import androidx.room.Room;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 
 public class userData {
 
-    private static Context context;
+//    private static Context context;
 
-    private static MyDatabase db = MyDatabase.getInstance(context);
-    public static List<platforms> getAll = db.passDao().getAll() ;
+    public static MyDatabase db;
+    public static List<platforms> getAll = null ;
 
-    protected String find(int id){
-        platforms obj = new platforms();
-        if(id == obj.id){
-//            Account account = new Account(obj.id, obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo, obj.Favorite, obj.CreationDate, obj.EditDate);
-            return obj.UserName;
+    protected static platforms find(int id){
+        for (platforms account: userData.getAll){
+            if(id == account.id){
+                return account;
+            }
         }
         return null;
     }
 
-    protected String[] filterAll(String filterType){
-        platforms obj = new platforms();
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    protected static List<platforms> filterAll(String filterType){
+        List<platforms> filterResult = null;
+        LocalDate monthTime = LocalDate.now().plusDays(30);
+
         for (platforms platform: getAll){
-            if(Objects.equals(filterType, "favorite")){
+            if(Objects.equals(filterType, "favorite" ) && platform.Favorite){
                 // TODO: Add filter
-//                String[] account = new String[]{obj.id, obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo};
-//                return account;
+                filterResult.add(platform);
             }
             else if(Objects.equals(filterType, "recent")){
-//                String[] account = new String[]{obj.id, obj.PlatformName, obj.UserName, obj.Password, obj.Email, obj.Website, obj.AdditionalInfo};
-//                return account;
-            } else {
-                return null;
+                if(monthTime.isAfter(LocalDate.parse(platform.CreationDate))){}
+                filterResult.add(platform);
             }
         }
         return null;
     }
 
+    protected static void Delete(int Id){
+        platforms account = find(Id);
+        db.passDao().delete(account);
+    }
+
+    protected static void UpdateAll(int Id, String platform, String userName, String email, String Password, String website, String info, boolean favorite){
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            db.passDao().updateAll(
+                    Id, platform, userName, email, Password, website, info, favorite,
+                    LocalDate.now().toString()
+            );
+        }
+    }
+
+    protected static void UpdateFavorite(int Id, boolean favorite){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            db.passDao().updateFavorite(
+                    Id,
+                    favorite,
+                    LocalDate.now().toString()
+            );
+        }
+    }
+
+
+
     public userData(Context context) {
-        this.context = context;
+        db = MyDatabase.getInstance(context);
+        getAll = db.passDao().getAll();
     }
 }
 

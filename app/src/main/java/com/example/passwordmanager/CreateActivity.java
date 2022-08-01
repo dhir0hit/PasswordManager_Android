@@ -63,6 +63,6 @@ public class CreateActivity extends AppCompatActivity {
         finish();
 
 
-        Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Account Created", Toast.LENGTH_SHORT).show();
     }
 }
