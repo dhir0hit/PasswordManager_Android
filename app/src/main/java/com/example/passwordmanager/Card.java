@@ -54,40 +54,40 @@ class Card {
         /*
          * Setting Image to avatarImage
          * */
-        String platform = "Google".toLowerCase(Locale.ROOT);
+        String platform = PlatformName.toLowerCase(Locale.ROOT);
         switch (platform){
             case "google":
                 imageId = R.drawable.google_logo;
                 break;
             case "discord":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.discord_logo;
                 break;
             case "facebook":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.facebook_logo;
                 break;
             case "instagram":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.instagram_logo;
                 break;
             case "microsoft":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.microsoft_logo;
                 break;
             case "playstation":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.playstation_logo;
                 break;
             case "snapchat":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.snapchat_logo;
                 break;
             case "steam":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.steam_logo;
                 break;
             case "twitter":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.twitter_logo;
                 break;
             case "xbox":
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.xbox_logo;
                 break;
             default:
-                imageId = R.drawable.google_logo;
+                imageId = R.drawable.android_logo;
                 break;
         }
 

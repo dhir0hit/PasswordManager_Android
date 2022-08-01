@@ -289,18 +289,18 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     public void deleteAccount(View view){
-        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", "Are You Sure You Wanna Delete The Account?");
+        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", "Are You Sure You Wanna Delete The Account?", AccountId);
 
         showAlertDialog.show(getSupportFragmentManager(), "Alert dialog");
 
         boolean userInput = showAlertDialog.userInput;
-
+/*
         if (userInput){
             userData.Delete(AccountId);
             finish();
 
             Toast.makeText(this, "Account Deleted", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     public void ShowPassword(View view) {

@@ -17,8 +17,8 @@ public interface PassDao {
     void insert(platforms p);
 
 
-    @Query("DELETE FROM platforms WHERE id = :id")
-    void delete(int id);
+    @Delete
+    void delete(platforms platform);
 
 
 

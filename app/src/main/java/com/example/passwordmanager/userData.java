@@ -49,8 +49,8 @@ public class userData {
     }
 
     protected static void Delete(int Id){
-        /*platforms account = find(Id);*/
-        db.passDao().delete(Id);
+        platforms account = find(Id);
+        db.passDao().delete(account);
     }
 
     protected static void UpdateAll(int Id, String platform, String userName, String email, String Password, String website, String info, boolean favorite){

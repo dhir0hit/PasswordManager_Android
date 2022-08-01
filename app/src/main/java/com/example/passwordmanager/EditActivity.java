@@ -76,7 +76,7 @@ public class EditActivity extends AppCompatActivity {
     }
 
     public void deleteAccount(View view){
-        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", accountId.getText().toString());
+        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", accountId.getText().toString(), Integer.parseInt(accountId.getText().toString()));
 
         showAlertDialog.show(getSupportFragmentManager(), "Alert dialog");
 
