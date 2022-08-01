@@ -112,6 +112,7 @@ public class LandingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
 
 
 
@@ -119,7 +120,7 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mVisible = true;
-        mControlsView = binding.fullscreenContentControls;
+//        mControlsView = binding.fullscreenContentControls;
         mContentView = binding.fullscreenContent;
 
         // Set up the user interaction to manually show or hide the system UI.
@@ -133,7 +134,7 @@ public class LandingActivity extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        binding.dummyButton.setOnTouchListener(mDelayHideTouchListener);
+//        binding.dummyButton.setOnTouchListener(mDelayHideTouchListener);
 
 
         SubmitButton = findViewById(R.id.submit_button);
@@ -158,15 +159,11 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
-        }
+        show();
     }
 
     private void hide() {
-        // Hide UI first
+        /*// Hide UI first
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
@@ -176,7 +173,7 @@ public class LandingActivity extends AppCompatActivity {
 
         // Schedule a runnable to remove the status and navigation bar after a delay
         mHideHandler.removeCallbacks(mShowPart2Runnable);
-        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
+        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);*/
     }
 
     private void show() {

@@ -32,7 +32,7 @@
             android:layout_width="800dp"
             android:layout_height="500dp"
             android:layout_marginStart="-80dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="-14dp"
             android:background="#ED1E1E"
             android:rotation="-30"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,7 +56,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="-100dp"
+                android:layout_marginEnd="100dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -66,13 +66,14 @@
                     android:id="@+id/submit_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
                     android:hint="submit"
                     android:rotation="30"
                     android:text="Submit"
-                    android:textColor="#4A148C"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textDirection="firstStrong"
-                    android:translationX="-150dp"
-                    android:translationY="200dp" />
+                    android:translationX="80dp"
+                    android:translationY="150dp" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -81,57 +82,61 @@
                     android:layout_marginEnd="350dp"
                     android:layout_marginBottom="150dp"
                     android:rotation="30"
-                    android:translationX="-60dp"
-                    android:translationY="100dp"
+                    android:translationX="100dp"
+                    android:translationY="150dp"
                     app:srcCompat="@drawable/logo" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="151dp"
-            android:layout_marginBottom="258dp"
-            android:ems="10"
-            android:hint="username"
-            android:inputType="textPersonName"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextTextPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="73dp"
-            android:layout_marginBottom="138dp"
-            android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-            app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="Hi,user. you can use password manager"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="78dp"
-            android:layout_marginTop="51dp"
-            android:text="Hi,user..you can use password manager"
-            android:textSize="17sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="username"
+                android:inputType="textPersonName"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="password"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
