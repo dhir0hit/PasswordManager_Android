@@ -49,22 +49,15 @@ public class userData {
     }
 
     protected static void Delete(int Id){
-        platforms account = find(Id);
-        db.passDao().delete(account);
+        /*platforms account = find(Id);*/
+        db.passDao().delete(Id);
     }
 
-    protected static void UpdateAll(int Id){
-        platforms account = find(Id);
+    protected static void UpdateAll(int Id, String platform, String userName, String email, String Password, String website, String info, boolean favorite){
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             db.passDao().updateAll(
-                    account.id,
-                    account.PlatformName,
-                    account.UserName,
-                    account.Email,
-                    account.Password,
-                    account.Website,
-                    account.AdditionalInfo,
-                    account.Favorite,
+                    Id, platform, userName, email, Password, website, info, favorite,
                     LocalDate.now().toString()
             );
         }

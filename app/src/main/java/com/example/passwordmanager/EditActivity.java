@@ -18,6 +18,7 @@ public class EditActivity extends AppCompatActivity {
     private EditText accountAdditionalInfo;
 
     private TextView accountId;
+    private boolean IsFavorite;
 
 
 
@@ -28,7 +29,7 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         Intent intent = getIntent();
-        // TODO: load account details from db using id
+
         int Id = Integer.parseInt(intent.getStringExtra("account_id").toString());
 
         userData accounts = new userData(this);
@@ -66,13 +67,16 @@ public class EditActivity extends AppCompatActivity {
         accountWebsite = findViewById(R.id.account_website_edit);
         accountAdditionalInfo = findViewById(R.id.account_additional_info_edit);
 
-        // TODO: Save things to database
+
+
+        userData.UpdateAll(Integer.parseInt(accountId.getText().toString()), accountPlatform.getText().toString(), accountUserName.getText().toString(), accountMail.getText().toString(), accountPassword.getText().toString(), accountWebsite.getText().toString(), accountAdditionalInfo.getText().toString(), IsFavorite);
+
 
         finish();
     }
 
     public void deleteAccount(View view){
-        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", "Are You Sure You Wanna Delete The Account?");
+        ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", accountId.getText().toString());
 
         showAlertDialog.show(getSupportFragmentManager(), "Alert dialog");
 
@@ -80,8 +84,14 @@ public class EditActivity extends AppCompatActivity {
 
         // TODO: delete account from database if userInput true
         if (userInput){
+
+            userData account = new userData(this);
+
+            account.Delete(Integer.parseInt(accountId.getText().toString()));
             Intent intent = new Intent(EditActivity.this, HomeActivity.class);
             startActivity(intent);
+
         }
+
     }
 }

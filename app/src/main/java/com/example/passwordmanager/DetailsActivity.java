@@ -24,8 +24,91 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Intent intent = getIntent();
+        int Id = Integer.parseInt(intent.getStringExtra("account_id").toString());
+        int accountImageID = Integer.parseInt(intent.getStringExtra("account_image").toString());
+
+        userData accounts = new userData(this);
+        platforms account = accounts.find(Id);
+
+        AccountId = Id;
+
+        PasswordStrength passwordStrength = new PasswordStrength("account.Password");
+        accountPassStrength.setProgress(passwordStrength.Percent());
+
+        accountImage.setImageResource(accountImageID);
+        accountPlatform.setText(account.PlatformName);
+        accountId.setText(String.format("%d", account.id));
+
+        accountUserName.setText(account.UserName);
+        accountMail.setText(account.Email);
+
+        password = account.Password;
+        String text = "";
+
+        for (int x = 0; x < password.length(); x++) {
+            text += "⚫";
+        }
+        accountPassword.setText(text);
+
+        accountWebsite.setText(account.Website);
+        accountAdditionalInfo.setText(account.AdditionalInfo);
+
+        accountCreationDate.setText(account.CreationDate);
+        accountLastEditedDate.setText(account.EditDate);
+
+        favoriteAccount = account.Favorite;
+
+
+        copyUserName = findViewById(R.id.account_username_copy);
+        copyMail = findViewById(R.id.account_mail_Copy);
+        copyPassword = findViewById(R.id.account_password_copy);
+        copyWebsite = findViewById(R.id.account_website_copy);
+
+
+        copyUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("username", account.UserName);
+                clipboard.setPrimaryClip(clipData);
+
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        copyMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("Email", account.Email);
+                clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+            }
+        });
+        copyPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("Password", account.Password);
+                clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        copyWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("username", account.Website);
+                clipboard.setPrimaryClip(clipData);
+                Toast.makeText(DetailsActivity.this, "User Name Copied", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
+
 
     /*
      * Display Info TextView/ImageView
