@@ -26,6 +26,7 @@ class Card {
     private TextView userMail;
     private ImageView favoriteIcon;
 
+    private int AccountId;
     private String UserMail;
     private String PlatformName;
     private boolean FavoriteAccount;
@@ -42,7 +43,7 @@ class Card {
         favoriteIcon = new ImageView(Context);
 
         /* Adding Platform name and Layout Params */
-        platformName.setText(PlatformName);
+        platformName.setText(String.format("%d",AccountId));
         platformName.setTextSize(24);
         platformName.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
@@ -138,7 +139,7 @@ class Card {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Context, DetailsActivity.class);
-                intent.putExtra("account", "123");
+                intent.putExtra("account_id", String.format("%d", AccountId));
                 intent.putExtra("account_image", String.format("%d", imageId));
                 intent.putExtra("creation_date", LocalDate.now().toString());
                 intent.putExtra("last_edit_date", LocalDate.now().toString());
@@ -149,7 +150,8 @@ class Card {
         parentView.addView(cardView);
     }
 
-    public Card(android.content.Context context, String userMail, String platformName, boolean favoriteAccount) {
+    public Card(android.content.Context context, int accountId, String userMail, String platformName, boolean favoriteAccount) {
+        AccountId = accountId;
         UserMail = userMail;
         PlatformName = platformName;
         FavoriteAccount = favoriteAccount;

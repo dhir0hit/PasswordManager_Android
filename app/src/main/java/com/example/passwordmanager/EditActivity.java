@@ -27,11 +27,12 @@ public class EditActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_edit);
 
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         // TODO: load account details from db using id
-        intent.getStringExtra("Id");
+        int Id = Integer.parseInt(intent.getStringExtra("account_id").toString());
 
-        String[] accountDetail = {"sample Platform", "sample Id", "sample username", "sample mail", "sample password", "sample website", "sample additional info", "true"};
+        userData accounts = new userData(this);
+        platforms account = accounts.find(Id);
 
         accountPlatform = findViewById(R.id.account_platform_edit);
         accountUserName = findViewById(R.id.account_username_edit);
@@ -42,13 +43,13 @@ public class EditActivity extends AppCompatActivity {
 
         accountId = findViewById(R.id.account_id_edit2);
 
-        accountPlatform.setText(accountDetail[0]);
-        accountId.setText(accountDetail[1]);
-        accountUserName.setText(accountDetail[2]);
-        accountMail.setText(accountDetail[3]);
-        accountPassword.setText(accountDetail[4]);
-        accountWebsite.setText(accountDetail[5]);
-        accountAdditionalInfo.setText(accountDetail[6]);
+        accountPlatform.setText(account.PlatformName);
+        accountId.setText(String.format("%d", account.id));
+        accountUserName.setText(account.UserName);
+        accountMail.setText(account.Email);
+        accountPassword.setText(account.Password);
+        accountWebsite.setText(account.Website);
+        accountAdditionalInfo.setText(account.AdditionalInfo);
 
 
     }
