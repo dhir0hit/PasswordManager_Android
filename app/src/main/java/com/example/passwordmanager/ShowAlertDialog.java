@@ -1,6 +1,7 @@
 package com.example.passwordmanager;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,8 +32,6 @@ public class ShowAlertDialog extends AppCompatDialogFragment {
                         userData.Delete(id);
 
 
-
-
                         Toast toast = Toast.makeText(getContext(), "Account Deleted", Toast.LENGTH_LONG);
                         toast.show();
                     }
@@ -51,5 +50,6 @@ public class ShowAlertDialog extends AppCompatDialogFragment {
         Title = title;
         Message = message;
         id = Id;
+
     }
 }

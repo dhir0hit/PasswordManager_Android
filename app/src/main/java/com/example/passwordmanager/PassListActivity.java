@@ -24,26 +24,22 @@ public class PassListActivity extends AppCompatActivity {
     LocalTime time = LocalTime.now();
     int hour = time.getHour();
 
+    private userData user_data;
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ((LinearLayout) findViewById(R.id.card_list)).removeAllViews();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_passlist);
+        ((LinearLayout) findViewById(R.id.card_list)).removeAllViews();
 
         load();
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-
+    protected void onResume() {
+        super.onResume();
         ((LinearLayout) findViewById(R.id.card_list)).removeAllViews();
 
         load();
@@ -57,8 +53,8 @@ public class PassListActivity extends AppCompatActivity {
 
 
 
-        userData accounts = new userData(this);
-        login user = userData.getLoginUser();
+        user_data = new userData(this);
+        login user = user_data.getLoginUser();
 
         CardList = findViewById(R.id.card_list);
         BackgroundButton = findViewById(R.id.background_button);
@@ -91,7 +87,7 @@ public class PassListActivity extends AppCompatActivity {
         /*Card card = new Card(this, "mail@mail.com", "platform", true);
         card.AddTo(CardList);*/
 
-        List<platforms> platform_list = accounts.filterAll(Type);
+        List<platforms> platform_list = user_data.filterAll(Type);
 
         for (platforms account: platform_list){
             Card card = new Card(this, account.id, account.Email, account.PlatformName, account.Favorite);

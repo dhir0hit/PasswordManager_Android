@@ -34,21 +34,6 @@
                     android:onClick="cancelChanges"
                     app:srcCompat="@drawable/ic_baseline_close_24" />
 
-                <ImageButton
-                    android:id="@+id/delete_edit_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="deleteAccount"
-                    app:srcCompat="@drawable/ic_baseline_delete_outline_24" />
-
-                <ImageButton
-                    android:id="@+id/favorite_edit_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="favoriteCurrentAccount"
-                    app:srcCompat="@drawable/ic_baseline_star_notselected" />
             </LinearLayout>
 
         </LinearLayout>
@@ -58,7 +43,9 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:progress="50" />
+            android:progress="50"
+            android:progressBackgroundTint="@color/Secondary"
+            android:progressTint="@color/Primary" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -16,6 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class DetailsActivity extends AppCompatActivity {
 
 
@@ -47,6 +49,8 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView accountCreationDate;
     private TextView accountLastEditedDate;
 
+    private userData user_data;
+
     /*
      * Interactions Buttons
      * */
@@ -68,6 +72,8 @@ public class DetailsActivity extends AppCompatActivity {
     private String password;
     private boolean password_show;
     private int AccountId;
+    private int imageId;
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -86,8 +92,11 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        load();
+        try {
+            load();
+        }catch (NullPointerException error){
 
+        }
     }
 
     private void load(){
@@ -115,15 +124,55 @@ public class DetailsActivity extends AppCompatActivity {
         int Id = Integer.parseInt(intent.getStringExtra("account_id").toString());
         int accountImageID = Integer.parseInt(intent.getStringExtra("account_image").toString());
 
-        userData accounts = new userData(this);
-        platforms account = accounts.find(Id);
+        user_data = new userData(this);
+        platforms account = user_data.find(Id);
 
         AccountId = Id;
 
-        PasswordStrength passwordStrength = new PasswordStrength("account.Password");
+        PasswordStrength passwordStrength = new PasswordStrength(account.Password);
         accountPassStrength.setProgress(passwordStrength.Percent());
 
-        accountImage.setImageResource(accountImageID);
+
+        String platform = account.PlatformName.toLowerCase(Locale.ROOT);
+        switch (platform){
+            case "google":
+                imageId = R.drawable.google_logo;
+                break;
+            case "discord":
+                imageId = R.drawable.discord_logo;
+                break;
+            case "facebook":
+                imageId = R.drawable.facebook_logo;
+                break;
+            case "instagram":
+                imageId = R.drawable.instagram_logo;
+                break;
+            case "microsoft":
+                imageId = R.drawable.microsoft_logo;
+                break;
+            case "playstation":
+                imageId = R.drawable.playstation_logo;
+                break;
+            case "snapchat":
+                imageId = R.drawable.snapchat_logo;
+                break;
+            case "steam":
+                imageId = R.drawable.steam_logo;
+                break;
+            case "twitter":
+                imageId = R.drawable.twitter_logo;
+                break;
+            case "xbox":
+                imageId = R.drawable.xbox_logo;
+                break;
+            default:
+                imageId = R.drawable.android_logo;
+                break;
+        }
+
+
+
+        accountImage.setImageResource(imageId);
         accountPlatform.setText(account.PlatformName);
         accountId.setText(String.format("%d", account.id));
 
@@ -203,7 +252,7 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        userData.UpdateFavorite(AccountId, favoriteAccount);
+        user_data.UpdateFavorite(AccountId, favoriteAccount);
     }
 
     public void favoriteCurrentAccount(View view){
@@ -228,13 +277,6 @@ public class DetailsActivity extends AppCompatActivity {
         showAlertDialog.show(getSupportFragmentManager(), "Alert dialog");
 
         boolean userInput = showAlertDialog.userInput;
-/*
-        if (userInput){
-            userData.Delete(AccountId);
-            finish();
-
-            Toast.makeText(this, "Account Deleted", Toast.LENGTH_SHORT).show();
-        }*/
     }
 
     public void ShowPassword(View view) {

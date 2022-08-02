@@ -36,10 +36,12 @@ public class userData {
         db.passDao().insert(platforms);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     protected static List<platforms> filterAll(String filterType){
         List<platforms> filterResult = new ArrayList<>();
-        LocalDate monthTime = LocalDate.now().plusDays(30);
+        LocalDate monthTime = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            monthTime = LocalDate.now().plusDays(30);
+        }
 
         if (filterType.equals("all")){
           filterResult = getAll;
@@ -53,8 +55,11 @@ public class userData {
                     }
                 }
                 else if(Objects.equals(filterType, "recent")){
-                    if(monthTime.isAfter(LocalDate.parse(platform.CreationDate))){}
-                    filterResult.add(platform);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        if(monthTime.isAfter(LocalDate.parse(platform.CreationDate))){
+                            filterResult.add(platform);
+                        }
+                    }
                 }
             }
         }
@@ -105,6 +110,9 @@ public class userData {
         return user;
     }
 
+    protected static void updateLogin(String user, String pass){
+        db.logindao().updateLogin(user,pass);
+    }
 
     public userData(Context context) {
         db = MyDatabase.getInstance(context);

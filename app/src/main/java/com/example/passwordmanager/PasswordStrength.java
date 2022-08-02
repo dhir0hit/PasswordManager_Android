@@ -51,7 +51,12 @@ public class PasswordStrength {
             passwordLengthStrength /= 2;
         }
 
-        return (int) (passwordLengthStrength + passwordCharStrength);
+        int result = (int) (passwordLengthStrength + passwordCharStrength);
+
+        if(result > 100){
+            result =100;
+        }
+        return result;
     }
 
     public PasswordStrength(String password){

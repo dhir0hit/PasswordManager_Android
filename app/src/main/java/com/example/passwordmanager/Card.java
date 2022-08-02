@@ -43,7 +43,7 @@ class Card {
         favoriteIcon = new ImageView(Context);
 
         /* Adding Platform name and Layout Params */
-        platformName.setText(String.format("%d",AccountId));
+        platformName.setText(PlatformName);
         platformName.setTextSize(24);
         platformName.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
