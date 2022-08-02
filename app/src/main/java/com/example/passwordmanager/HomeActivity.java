@@ -37,7 +37,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        // TODO: class.filterAll(favorite or recent) to get all account with specific filter
         load();
     }
 

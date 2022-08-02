@@ -256,7 +256,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     public void favoriteCurrentAccount(View view){
-        // TODO: Change db favorite account bool or create onDestroy to save whole account data
+
         favoriteAccount = !favoriteAccount;
 
         if(favoriteAccount) {

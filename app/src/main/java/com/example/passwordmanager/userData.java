@@ -50,7 +50,6 @@ public class userData {
                 if(Objects.equals(filterType, "favorite" )){
 
                     if (platform.Favorite){
-                        // TODO: Add filter
                         filterResult.add(platform);
                     }
                 }

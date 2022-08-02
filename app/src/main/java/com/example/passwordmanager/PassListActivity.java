@@ -48,7 +48,6 @@ public class PassListActivity extends AppCompatActivity {
     private void load() {
 
         Intent intent = getIntent();
-        // TODO: use type to filter account and display accounts
         String Type = intent.getStringExtra("type");
 
 
