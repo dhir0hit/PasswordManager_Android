@@ -68,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
                     android:hint="submit"
+                    android:onClick="submit"
                     android:rotation="30"
                     android:text="Submit"
                     android:textColor="@color/design_default_color_on_secondary"
@@ -110,7 +111,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/loginUsername"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -125,7 +126,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/loginPassword"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -133,7 +134,7 @@
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+                app:layout_constraintTop_toBottomOf="@+id/loginUsername"
                 app:layout_constraintVertical_bias="0.0" />
 
         </LinearLayout>

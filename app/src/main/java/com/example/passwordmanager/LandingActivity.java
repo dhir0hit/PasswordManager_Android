@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.passwordmanager.databinding.ActivityLandingBinding;
 
@@ -24,6 +26,44 @@ import com.example.passwordmanager.databinding.ActivityLandingBinding;
 public class LandingActivity extends AppCompatActivity {
     // Declaring Custom Variables
     private Button SubmitButton;
+
+    MyDatabase db;
+
+
+    public String getUserName()
+    {
+        SharedPreferences sp = getSharedPreferences("userNameAndPassword", 0);
+        String str = sp.getString("userName","no userName created");
+        return str;
+    }
+
+    public String getPassword()
+    {
+        SharedPreferences sp = getSharedPreferences("userNameAndPassword", 0);
+        String str = sp.getString("password","no password created");
+        return str;
+    }
+
+    public void writeToUserNameAndPassword(String userName, String password)
+    {
+        SharedPreferences.Editor pref =
+                getSharedPreferences("userNameAndPassword",0).edit();
+        pref.putString("userName", userName);
+        pref.putString("password", password);
+        pref.commit();
+    }
+
+    public void submit(View view){
+        EditText userEt = findViewById(R.id.loginUsername);
+        EditText passEt = findViewById(R.id.loginPassword);
+        login l = new login(userEt.getText().toString(), passEt.getText().toString());
+
+        db.logindao().insert(l);
+
+
+        Intent intent = new Intent(LandingActivity.this, HomeActivity.class);
+        startActivity(intent);
+    }
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -116,6 +156,9 @@ public class LandingActivity extends AppCompatActivity {
 
 
 
+
+
+
         binding = ActivityLandingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -137,14 +180,7 @@ public class LandingActivity extends AppCompatActivity {
 //        binding.dummyButton.setOnTouchListener(mDelayHideTouchListener);
 
 
-        SubmitButton = findViewById(R.id.submit_button);
-        SubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LandingActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 

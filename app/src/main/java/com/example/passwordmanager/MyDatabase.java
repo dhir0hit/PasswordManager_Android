@@ -6,10 +6,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {platforms.class}, version = 1)
+@Database(entities = {platforms.class, login.class}, version = 1)
 public abstract class MyDatabase extends RoomDatabase {
 
     abstract PassDao passDao();
+    abstract loginDao logindao();
     static MyDatabase instance;
     static MyDatabase getInstance(Context ctx){
 
@@ -21,3 +22,5 @@ public abstract class MyDatabase extends RoomDatabase {
         return instance;
     }
 }
+
+

@@ -17,8 +17,6 @@ import android.widget.Toast;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    // Todo: load from db everytime this activity is open its better way
-    // TODO: onresume update data so data edited will show
 
 
     @Override
@@ -183,8 +181,8 @@ public class DetailsActivity extends AppCompatActivity {
         accountLastEditedDate = findViewById(R.id.account_last_created);
 
 
-        // TODO: Get intent from other activity to display image
-        // TODO: Load data from db find id
+
+
         Intent intent = getIntent();
         int Id = Integer.parseInt(intent.getStringExtra("account_id").toString());
         int accountImageID = Integer.parseInt(intent.getStringExtra("account_image").toString());
