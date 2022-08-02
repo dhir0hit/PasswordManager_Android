@@ -70,7 +70,6 @@ public class LandingActivity extends AppCompatActivity {
 
             ((EditText) findViewById(R.id.loginUsername)).setVisibility(View.INVISIBLE);
             ((EditText) findViewById(R.id.loginUsername)).setHeight(0);
-            ((EditText) findViewById(R.id.loginPassword)).setText(user.password);
             password = user.password;
         }
 
