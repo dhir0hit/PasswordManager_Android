@@ -22,6 +22,12 @@ public class SettingsActivity extends AppCompatActivity {
         updatebtn = findViewById(R.id.update);
 
         userData user_data = new userData(this);
+        login user = userData.getLoginUser();
+
+        if (user != null) {
+            userEt.setText(user.userName);
+            passEt.setText(user.password);
+        }
 
         updatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
