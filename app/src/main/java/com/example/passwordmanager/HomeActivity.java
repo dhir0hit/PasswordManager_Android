@@ -45,6 +45,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
+    public void LoadAll(View view) {
+        Intent intent = new Intent(HomeActivity.this, PassListActivity.class);
+        intent.putExtra("type", "all");
+        startActivity(intent);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void LoadFavorite(View view) {
         Intent intent = new Intent(HomeActivity.this, PassListActivity.class);
         intent.putExtra("type", "favorite");

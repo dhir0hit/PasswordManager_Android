@@ -9,6 +9,7 @@ import androidx.room.Room;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -30,22 +31,34 @@ public class userData {
         return null;
     }
 
+    protected static void addAccount(int id, String platform, String username, String email, String password, String website, String info){
+        platforms platforms = new platforms(id, platform, username, email, password, website, info);
+        db.passDao().insert(platforms);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     protected static List<platforms> filterAll(String filterType){
-        List<platforms> filterResult = null;
+        List<platforms> filterResult = new ArrayList<>();
         LocalDate monthTime = LocalDate.now().plusDays(30);
 
-        for (platforms platform: getAll){
-            if(Objects.equals(filterType, "favorite" ) && platform.Favorite){
-                // TODO: Add filter
-                filterResult.add(platform);
-            }
-            else if(Objects.equals(filterType, "recent")){
-                if(monthTime.isAfter(LocalDate.parse(platform.CreationDate))){}
-                filterResult.add(platform);
+        if (filterType.equals("all")){
+          filterResult = getAll;
+        } else{
+            for (platforms platform: getAll){
+                if(Objects.equals(filterType, "favorite" )){
+
+                    if (platform.Favorite){
+                        // TODO: Add filter
+                        filterResult.add(platform);
+                    }
+                }
+                else if(Objects.equals(filterType, "recent")){
+                    if(monthTime.isAfter(LocalDate.parse(platform.CreationDate))){}
+                    filterResult.add(platform);
+                }
             }
         }
-        return null;
+        return filterResult;
     }
 
     protected static void Delete(int Id){
@@ -73,6 +86,24 @@ public class userData {
         }
     }
 
+
+    protected static void newLogin(String username, String password){
+        login l = new login(username, password);
+        db.logindao().insert(l);
+    }
+
+    protected static login getLoginUser(){
+        List<login> loginlist = db.logindao().getAll();
+
+        login user;
+
+        try {
+            user = loginlist.get(0);
+        } catch (IndexOutOfBoundsException exception){
+            user = null;
+        }
+        return user;
+    }
 
 
     public userData(Context context) {

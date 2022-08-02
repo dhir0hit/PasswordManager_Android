@@ -24,7 +24,12 @@ public class PassListActivity extends AppCompatActivity {
     LocalTime time = LocalTime.now();
     int hour = time.getHour();
 
-    MyDatabase db;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ((LinearLayout) findViewById(R.id.card_list)).removeAllViews();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +37,28 @@ public class PassListActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_passlist);
 
-        Intent intent = new Intent();
+        load();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        ((LinearLayout) findViewById(R.id.card_list)).removeAllViews();
+
+        load();
+    }
+
+    private void load() {
+
+        Intent intent = getIntent();
         // TODO: use type to filter account and display accounts
         String Type = intent.getStringExtra("type");
 
+
+
+        userData accounts = new userData(this);
+        login user = userData.getLoginUser();
 
         CardList = findViewById(R.id.card_list);
         BackgroundButton = findViewById(R.id.background_button);
@@ -55,7 +78,7 @@ public class PassListActivity extends AppCompatActivity {
             img.setImageResource(R.drawable.ic_baseline_bedtime_48);
         }
 
-        greeting.setText("Hi User, "+userGreeting);
+        greeting.setText("Hi " +  user.userName + ", " + userGreeting);
 
         BackgroundButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +91,9 @@ public class PassListActivity extends AppCompatActivity {
         /*Card card = new Card(this, "mail@mail.com", "platform", true);
         card.AddTo(CardList);*/
 
-        userData accounts = new userData(this);
+        List<platforms> platform_list = accounts.filterAll(Type);
 
-        for (platforms account: accounts.getAll){
+        for (platforms account: platform_list){
             Card card = new Card(this, account.id, account.Email, account.PlatformName, account.Favorite);
             card.AddTo(CardList);
         }

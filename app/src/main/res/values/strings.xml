@@ -16,4 +16,8 @@
     <string name="recent_account_description">All the accounts which are Recently created are listed here</string>
     <string name="total_account_heading">Total Accounts</string>
     <string name="total_account_description">All the accounts are listed here</string>
+
+
+    <string name="copyright">\@copyright Group B</string>
+
 </resources>

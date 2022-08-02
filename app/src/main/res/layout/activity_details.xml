@@ -58,7 +58,9 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:progress="50" />
+            android:progress="50"
+            android:progressBackgroundTint="@color/Secondary"
+            android:progressTint="@color/Primary" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,7 +91,8 @@
                     android:id="@+id/account_id_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="id(number)" />
+                    android:text="id(number)"
+                    android:textColor="@color/Primary" />
             </LinearLayout>
 
         </LinearLayout>
@@ -114,7 +117,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="0"
                         android:gravity="right|center_vertical"
-                        android:text="Username" />
+                        android:text="Username"
+                        android:textColor="@color/Primary" />
 
                     <Space
                         android:layout_width="10dp"
@@ -144,7 +148,8 @@
                         android:layout_width="130dp"
                         android:layout_height="match_parent"
                         android:gravity="right|center_vertical"
-                        android:text="E-mail" />
+                        android:text="E-mail"
+                        android:textColor="@color/Primary" />
 
                     <Space
                         android:layout_width="10dp"
@@ -174,7 +179,8 @@
                         android:layout_width="130dp"
                         android:layout_height="match_parent"
                         android:gravity="right|center_vertical"
-                        android:text="Password" />
+                        android:text="Password"
+                        android:textColor="@color/Primary" />
 
                     <Space
                         android:layout_width="10dp"
@@ -221,7 +227,8 @@
                         android:layout_width="130dp"
                         android:layout_height="match_parent"
                         android:gravity="right|center_vertical"
-                        android:text="Website" />
+                        android:text="Website"
+                        android:textColor="@color/Primary" />
 
                     <Space
                         android:layout_width="10dp"
@@ -255,7 +262,8 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Additional Info :" />
+                android:text="Additional Info :"
+                android:textColor="@color/Primary" />
 
             <TextView
                 android:id="@+id/account_additional_info"
@@ -280,7 +288,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="Created" />
+                    android:text="Created"
+                    android:textColor="@color/Primary" />
 
                 <Space
                     android:layout_width="10dp"
@@ -304,7 +313,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="Last Edited" />
+                    android:text="Last Edited"
+                    android:textColor="@color/Primary" />
 
                 <Space
                     android:layout_width="wrap_content"

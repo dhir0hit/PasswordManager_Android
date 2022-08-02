@@ -14,7 +14,7 @@ public class login {
     public login(){}
 
     public login(String userName, String password) {
-
+        id = 0;
         this.userName = userName;
         this.password = password;
     }

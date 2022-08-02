@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class EditActivity extends AppCompatActivity {
@@ -18,7 +20,7 @@ public class EditActivity extends AppCompatActivity {
     private EditText accountAdditionalInfo;
 
     private TextView accountId;
-    private boolean IsFavorite;
+    private boolean favoriteAccount;
 
 
 
@@ -52,6 +54,13 @@ public class EditActivity extends AppCompatActivity {
         accountWebsite.setText(account.Website);
         accountAdditionalInfo.setText(account.AdditionalInfo);
 
+        favoriteAccount = account.Favorite;
+
+        if(favoriteAccount) {
+            ((ImageButton) findViewById(R.id.favorite_edit_button)).setImageResource(R.drawable.ic_baseline_star_selected);
+        } else {
+            ((ImageButton) findViewById(R.id.favorite_edit_button)).setImageResource(R.drawable.ic_baseline_star_notselected);
+        }
 
     }
 
@@ -69,11 +78,28 @@ public class EditActivity extends AppCompatActivity {
 
 
 
-        userData.UpdateAll(Integer.parseInt(accountId.getText().toString()), accountPlatform.getText().toString(), accountUserName.getText().toString(), accountMail.getText().toString(), accountPassword.getText().toString(), accountWebsite.getText().toString(), accountAdditionalInfo.getText().toString(), IsFavorite);
+        userData.UpdateAll(Integer.parseInt(accountId.getText().toString()), accountPlatform.getText().toString(), accountUserName.getText().toString(), accountMail.getText().toString(), accountPassword.getText().toString(), accountWebsite.getText().toString(), accountAdditionalInfo.getText().toString(), favoriteAccount);
 
 
         finish();
     }
+
+    public void favoriteCurrentAccount(View view){
+        // TODO: Change db favorite account bool or create onDestroy to save whole account data
+        favoriteAccount = !favoriteAccount;
+
+        if(favoriteAccount) {
+            ((ImageButton) view).setImageResource(R.drawable.ic_baseline_star_selected);
+        } else {
+            ((ImageButton) view).setImageResource(R.drawable.ic_baseline_star_notselected);
+        }
+
+
+
+        Log.d("favorite", String.format("%b", favoriteAccount));
+
+    }
+
 
     public void deleteAccount(View view){
         ShowAlertDialog showAlertDialog = new ShowAlertDialog("Delete", accountId.getText().toString(), Integer.parseInt(accountId.getText().toString()));

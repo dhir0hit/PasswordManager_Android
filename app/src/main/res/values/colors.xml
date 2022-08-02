@@ -15,4 +15,8 @@
     <color name="colorDanger">#FD2010</color>
     <color name="colorWarning">#FF9800</color>
     <color name="colorGood">#8BC34A</color>
+
+    <color name="Primary">#3A7B99</color>
+    <color name="Secondary">#A5DEF1</color>
+
 </resources>
