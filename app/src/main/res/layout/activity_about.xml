@@ -79,6 +79,22 @@
                 android:layout_margin="2dp"
                 android:background="@color/Secondary"
                 android:text="Harshdeep Kaur" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="@color/Secondary"
+                android:text="PawanDeep Kaur" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="@color/Secondary"
+                android:text="Avneet Kaur" />
         </LinearLayout>
 
     </LinearLayout>
