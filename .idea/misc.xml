@@ -27,6 +27,7 @@
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/drawable/ic_baseline_star_40.xml" value="0.116" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/drawable/ic_baseline_star_notselected.xml" value="0.2255" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/drawable/ic_baseline_star_selected.xml" value="0.2825" />
+        <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2875" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/drawable/star-48px.xml" value="0.1935" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_create.xml" value="0.25" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_details.xml" value="0.25" />
@@ -36,6 +37,8 @@
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_passlist.xml" value="0.25" />
         <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2875" />
+        <entry key="..\:/Users/rohit/AndroidStudioProjects/PasswordManager/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2875" />
       </map>
     </option>
   </component>

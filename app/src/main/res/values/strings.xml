@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">PasswordManager</string>
+    <string name="app_name">Password Manager</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_landing">LandingActivity</string>
+    <string name="title_activity_landing">Password Manager</string>
     <string name="overall_strength">Overall Strength</string>
     <string name="normal_strength">Normal</string>
     <string name="strong_strength">Strong</string>
