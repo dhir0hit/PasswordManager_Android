@@ -21,6 +21,7 @@ public class CreateActivity extends AppCompatActivity {
 
         // Create Id
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_create);
 
         platEt = findViewById(R.id.platform);
